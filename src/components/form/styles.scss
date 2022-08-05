@@ -1,0 +1,62 @@
+.lookup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  padding: 20px;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &_group {
+    width: 100%;
+    margin-top: 10px;
+
+    &--input, &--select {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    &--submit {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 15px 10px;
+      outline: none;
+      cursor: pointer;
+      background-color: #00a8ff;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #00a8ff;
+        color: #fff;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        color: #fff;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+}
