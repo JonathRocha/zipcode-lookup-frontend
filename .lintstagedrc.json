@@ -1,0 +1,11 @@
+{
+  "*.@(js|ts|tsx)": [
+    "npm run lint:fix"
+  ],
+  "*.spec.@(js|ts|tsx)": [
+    "npm test -- --bail --findRelatedTests"
+  ],
+  "*.+(json|css|md)": [
+    "prettier --write"
+  ]
+}

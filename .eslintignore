@@ -1,0 +1,7 @@
+# Defaults
+.gitignore
+.prettierignore
+
+dist
+node_modules
+public
