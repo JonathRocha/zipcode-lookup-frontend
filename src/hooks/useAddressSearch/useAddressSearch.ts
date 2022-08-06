@@ -12,26 +12,26 @@ export const isFetchingAddress = makeVar(false);
 export function useAddressSearch() {
   const { refetch: searchAddress } = useQuery(SEARCH_ADDRESS_QUERY, {
     skip: true,
-    onCompleted: (data) => {
-      address(data?.searchAddress ?? null);
-      if (data?.searchAddress) {
-        searchHistory(searchHistory().concat(data.searchAddress));
-      } else {
-        toast.info("Address not found!");
-      }
-    },
   });
 
   const search = useCallback(
     async (zipcode: string, country: string) => {
       isFetchingAddress(true);
       try {
-        await searchAddress({
+        const { data } = await searchAddress({
           input: {
             zipcode,
             country,
           },
         });
+
+        if (data?.searchAddress) {
+          address(data?.searchAddress);
+          searchHistory(searchHistory().concat(data.searchAddress));
+        } else {
+          address(null);
+          toast.info("Address not found!");
+        }
       } catch (error) {
         console.error(error);
         toast.error("An unexpected error ocurred, please try again.");
