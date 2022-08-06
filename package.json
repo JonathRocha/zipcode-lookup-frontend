@@ -14,7 +14,7 @@
     "url": "git+https://github.com/JonathRocha/zipcode-lookup-frontend.git"
   },
   "keywords": [],
-  "author": "Jonathan Rocha",
+  "author": "Jonathan Rocha <johnferreirar@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JonathRocha/zipcode-lookup-frontend/issues"
