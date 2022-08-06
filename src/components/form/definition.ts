@@ -1,6 +1,6 @@
 export interface AddressLookupForm {
   zipCode: string;
-  country: string;
+  countryCode: string;
 }
 
 export enum AddressLookupFormActionType {

@@ -15,13 +15,13 @@ export function useAddressSearch() {
   });
 
   const search = useCallback(
-    async (zipcode: string, country: string) => {
+    async (zipCode: string, countryCode: string) => {
       isFetchingAddress(true);
       try {
         const { data } = await searchAddress({
           input: {
-            zipcode,
-            country,
+            zipCode,
+            countryCode,
           },
         });
 

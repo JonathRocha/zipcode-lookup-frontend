@@ -7,7 +7,7 @@ import "./styles.scss";
 
 const formInitialState: AddressLookupForm = {
   zipCode: "",
-  country: "US",
+  countryCode: "US",
 };
 
 function reducer(state: AddressLookupForm, action: AddressLookupFormAction) {
@@ -28,13 +28,13 @@ export const Form = () => {
   const { search } = useAddressSearch();
   const isLoading = useReactiveVar(isFetchingAddress);
   const shouldDisableSubmit = useMemo(
-    () => isLoading || !state.zipCode || !state.country,
-    [isLoading, state.zipCode, state.country],
+    () => isLoading || !state.zipCode || !state.countryCode,
+    [isLoading, state.zipCode, state.countryCode],
   );
   const fieldNameTypeMapper = useMemo(
     () => ({
-      zipcode: AddressLookupFormActionType.SET_ZIP_CODE,
-      country: AddressLookupFormActionType.SET_COUNTRY,
+      zipCode: AddressLookupFormActionType.SET_ZIP_CODE,
+      countryCode: AddressLookupFormActionType.SET_COUNTRY,
     }),
     [],
   );
@@ -46,7 +46,7 @@ export const Form = () => {
   const handleSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      await search(state.zipCode, state.country);
+      await search(state.zipCode, state.countryCode);
       resetForm();
     },
     [search, state, resetForm],
@@ -67,11 +67,11 @@ export const Form = () => {
       <div className="lookup-form_group">
         <label htmlFor="country">Country</label>
         <select
-          id="country"
-          name="country"
+          id="countryCode"
+          name="countryCode"
           className="lookup-form_group--select"
           onChange={handleOnChange}
-          value={state.country}
+          value={state.countryCode}
         >
           <option value="US">US</option>
           <option value="BR">BR</option>
@@ -82,8 +82,8 @@ export const Form = () => {
         <label htmlFor="zipcode">Zip code</label>
         <input
           type="text"
-          id="zipcode"
-          name="zipcode"
+          id="zipCode"
+          name="zipCode"
           placeholder="Type your zip code"
           className="lookup-form_group--input"
           onChange={handleOnChange}
