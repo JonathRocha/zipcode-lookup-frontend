@@ -13,6 +13,7 @@ export function useAddressSearch() {
     skip: true,
     onCompleted: (data) => {
       address(data?.searchAddress ?? null);
+      data?.searchAddress && searchHistory(searchHistory().concat(data.searchAddress));
     },
   });
 
@@ -20,14 +21,12 @@ export function useAddressSearch() {
     async (zipcode: string, country: string) => {
       isFetchingAddress(true);
       try {
-        const { data } = await searchAddress({
+        await searchAddress({
           input: {
             zipcode,
             country,
           },
         });
-
-        searchHistory(searchHistory().concat(data?.searchAddress ?? null));
       } catch (error) {
         console.error(error);
       } finally {
