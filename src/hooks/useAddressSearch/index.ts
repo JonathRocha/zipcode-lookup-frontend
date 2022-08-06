@@ -1,7 +1,7 @@
+import { Address, SEARCH_ADDRESS_QUERY } from "@/hooks/useAddressSearch/definition";
 import { makeVar, useQuery } from "@apollo/client";
 import { useCallback } from "react";
 import { toast } from "react-toastify";
-import { Address, SEARCH_ADDRESS_QUERY } from "./definition";
 
 // States
 export const address = makeVar<Address | null>(null);

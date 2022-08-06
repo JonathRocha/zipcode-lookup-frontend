@@ -1,10 +1,10 @@
+import { searchHistory } from "@/hooks/useAddressSearch";
 import { useReactiveVar } from "@apollo/client";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { searchHistory } from "../../hooks/useAddressSearch";
 
-import "./styles.scss";
+import "@/components/history/styles.scss";
 
 export const History = () => {
   const addressHistory = useReactiveVar(searchHistory);

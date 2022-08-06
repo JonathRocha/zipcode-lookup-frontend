@@ -1,9 +1,9 @@
+import { Form } from "@/components/form";
+import { History } from "@/components/history";
+import { searchHistory } from "@/hooks/useAddressSearch";
 import { useReactiveVar } from "@apollo/client";
-import { Form } from "../../components/form";
-import { History } from "../../components/history";
-import { searchHistory } from "../../hooks/useAddressSearch";
 
-import "./styles.scss";
+import "@/pages/home/styles.scss";
 
 export const Home = () => {
   const addressHistory = useReactiveVar(searchHistory);

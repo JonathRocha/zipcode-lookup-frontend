@@ -15,9 +15,14 @@
     "jsx": "react-jsx",
     "strict": false,
     "downlevelIteration": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "src",
+    "rootDirs": ["src"],
+    "paths": {
+      "@/*": ["*"],
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

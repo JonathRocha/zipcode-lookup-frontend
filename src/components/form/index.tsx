@@ -1,9 +1,9 @@
+import { AddressLookupForm, AddressLookupFormAction, AddressLookupFormActionType } from "@/components/form/definition";
+import { isFetchingAddress, useAddressSearch } from "@/hooks/useAddressSearch";
 import { useReactiveVar } from "@apollo/client";
-import { FormEvent, ChangeEvent, useCallback, useReducer, useMemo } from "react";
-import { isFetchingAddress, useAddressSearch } from "../../hooks/useAddressSearch";
-import { AddressLookupForm, AddressLookupFormAction, AddressLookupFormActionType } from "./definition";
+import { ChangeEvent, FormEvent, useCallback, useMemo, useReducer } from "react";
 
-import "./styles.scss";
+import "@/components/form/styles.scss";
 
 const formInitialState: AddressLookupForm = {
   zipCode: "",

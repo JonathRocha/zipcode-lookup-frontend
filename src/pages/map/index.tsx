@@ -1,3 +1,4 @@
+import { isFetchingAddress, searchHistory, useAddressSearch } from "@/hooks/useAddressSearch";
 import { useReactiveVar } from "@apollo/client";
 import { Feature, Map as OlMap, View } from "ol";
 import { Point } from "ol/geom";
@@ -7,9 +8,8 @@ import { OSM, Vector } from "ol/source";
 import { Icon, Style } from "ol/style";
 import { useEffect, useMemo, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { isFetchingAddress, searchHistory, useAddressSearch } from "../../hooks/useAddressSearch";
 
-import "./styles.scss";
+import "@/pages/map/styles.scss";
 
 export const Map = () => {
   const { countryCode, zipCode } = useParams();

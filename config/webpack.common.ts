@@ -7,6 +7,9 @@ const common: Configuration | DevServerConfiguration = {
   entry: "./src/index",
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
+    alias: {
+      "@": resolve(__dirname, "../src"),
+    },
   },
   output: {
     path: resolve(__dirname, "../dist"),

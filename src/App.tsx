@@ -1,11 +1,11 @@
+import { Home } from "@/pages/home";
+import { Map } from "@/pages/map";
+import { NotFound } from "@/pages/notFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Home } from "./pages/home";
-import { Map } from "./pages/map";
-import { NotFound } from "./pages/notFound";
 
 import "react-toastify/dist/ReactToastify.min.css";
-import "./App.scss";
+import "@/App.scss";
 
 export const App = () => {
   return (
