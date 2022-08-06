@@ -47,12 +47,8 @@ export const Form = () => {
   const handleSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      try {
-        await search(state.zipCode, state.country);
-        resetForm();
-      } catch (error) {
-        console.error(error);
-      }
+      await search(state.zipCode, state.country);
+      resetForm();
     },
     [search, state, resetForm],
   );
