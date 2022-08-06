@@ -15,7 +15,7 @@ function reducer(state: AddressLookupForm, action: AddressLookupFormAction) {
     case AddressLookupFormActionType.SET_ZIP_CODE:
       return { ...state, zipCode: action.payload };
     case AddressLookupFormActionType.SET_COUNTRY:
-      return { ...state, country: action.payload };
+      return { ...state, countryCode: action.payload };
     case AddressLookupFormActionType.RESET:
       return formInitialState;
     default:
@@ -55,6 +55,7 @@ export const Form = () => {
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = event.target;
+      console.log(name, value);
       dispatch({ type: fieldNameTypeMapper[name], payload: value });
     },
     [fieldNameTypeMapper],
