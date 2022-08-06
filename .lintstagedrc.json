@@ -3,7 +3,7 @@
     "npm run lint:fix"
   ],
   "*.spec.@(js|ts|tsx)": [
-    "npm test -- --bail --findRelatedTests"
+    "npm run test -- --bail --findRelatedTests"
   ],
   "*.+(json|css|md)": [
     "prettier --write"
