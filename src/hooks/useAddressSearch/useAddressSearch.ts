@@ -1,5 +1,6 @@
 import { makeVar, useQuery } from "@apollo/client";
 import { useCallback } from "react";
+import { toast } from "react-toastify";
 import { Address, SEARCH_ADDRESS_QUERY } from "./address.definition";
 
 // States
@@ -13,7 +14,11 @@ export function useAddressSearch() {
     skip: true,
     onCompleted: (data) => {
       address(data?.searchAddress ?? null);
-      data?.searchAddress && searchHistory(searchHistory().concat(data.searchAddress));
+      if (data?.searchAddress) {
+        searchHistory(searchHistory().concat(data.searchAddress));
+      } else {
+        toast.info("Address not found!");
+      }
     },
   });
 
@@ -29,6 +34,7 @@ export function useAddressSearch() {
         });
       } catch (error) {
         console.error(error);
+        toast.error("An unexpected error ocurred, please try again.");
       } finally {
         isFetchingAddress(false);
       }
