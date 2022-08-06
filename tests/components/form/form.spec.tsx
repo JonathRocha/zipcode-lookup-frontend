@@ -27,7 +27,7 @@ describe("Form Component", () => {
     expect(screen.getByTestId("lookup-submit")).toBeInTheDocument();
   });
 
-  it(`Should disable the submit button when the form is loading`, async () => {
+  it(`Should disable the submit button when fetching address`, async () => {
     isFetchingAddressMock.mockReturnValue(true);
 
     render(<Form />);
