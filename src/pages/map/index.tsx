@@ -12,12 +12,16 @@ import { searchHistory } from "../../hooks/useAddressSearch";
 import "./styles.scss";
 
 export const Map = () => {
-  const { zipCode } = useParams();
+  const { countryCode, zipCode } = useParams();
   const addressHistory = useReactiveVar(searchHistory);
   const mapRef = useRef();
 
   const selectedAddress = useMemo(
-    () => addressHistory.find(({ postCode: addressZipCode }) => addressZipCode === zipCode),
+    () =>
+      addressHistory.find(
+        ({ postCode: addressZipCode, countryCode: addressCountryCode }) =>
+          addressZipCode === zipCode && addressCountryCode === countryCode,
+      ),
     [addressHistory, zipCode],
   );
 

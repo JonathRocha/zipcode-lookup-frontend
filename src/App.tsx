@@ -12,7 +12,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:zipCode/map" element={<Map />} />
+          <Route path="/:countryCode/:zipCode/map" element={<Map />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer autoClose={5000} closeOnClick pauseOnHover pauseOnFocusLoss />

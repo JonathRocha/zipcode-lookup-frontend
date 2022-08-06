@@ -25,7 +25,7 @@ export const History = () => {
               {address.placeName}, {address.state} {address.postCode} - {address.country}
             </span>
             <span>
-              <Link to={`/${address.postCode}/map`}>View on map</Link>
+              <Link to={`/${address.countryCode}/${address.postCode}/map`}>View on map</Link>
             </span>
           </li>
         ))}
