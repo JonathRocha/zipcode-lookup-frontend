@@ -31,7 +31,6 @@ export const Form = () => {
     () => isLoading || !state.zipCode || !state.country,
     [isLoading, state.zipCode, state.country],
   );
-
   const fieldNameTypeMapper = useMemo(
     () => ({
       zipcode: AddressLookupFormActionType.SET_ZIP_CODE,
