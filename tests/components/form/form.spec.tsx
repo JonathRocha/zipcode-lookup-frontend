@@ -1,5 +1,5 @@
 import { Form } from "@/components/form";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 jest.mock("@apollo/client", () => ({
   useReactiveVar: jest.fn(),
@@ -41,5 +41,14 @@ describe("Form Component", () => {
     render(<Form />);
 
     expect(screen.getByTestId("lookup-submit")).toBeDisabled();
+  });
+
+  it(`Should enable the submit button when zipCode input is not empty`, async () => {
+    isFetchingAddressMock.mockReturnValue(false);
+
+    render(<Form />);
+
+    fireEvent.change(screen.getByTestId("zipCode"), { target: { value: "12345" } });
+    expect(screen.getByTestId("lookup-submit")).not.toBeDisabled();
   });
 });
