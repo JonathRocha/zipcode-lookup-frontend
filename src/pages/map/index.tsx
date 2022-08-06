@@ -80,10 +80,22 @@ export const Map = () => {
     [selectedAddress],
   );
 
-  if (isLoading || !selectedAddress) {
+  if (isLoading && !selectedAddress) {
     return (
       <div className="map">
         <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (!selectedAddress && !isLoading) {
+    return (
+      <div className="map">
+        <h1>{"Sorry, we couldn't find an address."}</h1>
+
+        <Link className="map_link" to="/">
+          Back to home
+        </Link>
       </div>
     );
   }
