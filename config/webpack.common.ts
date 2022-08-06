@@ -1,6 +1,5 @@
 import { resolve } from "node:path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { Configuration, DefinePlugin } from "webpack";
+import { Configuration } from "webpack";
 import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 const common: Configuration | DevServerConfiguration = {
@@ -15,12 +14,13 @@ const common: Configuration | DevServerConfiguration = {
     path: resolve(__dirname, "../dist"),
     publicPath: "/",
     clean: true,
+    filename: "main-bundle-[fullhash].js",
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx|tsx|ts)$/,
-        use: ["ts-loader"],
+        test: /\.ts(x?)$/,
+        loader: "ts-loader",
         exclude: /node_modules/,
       },
       {
@@ -42,27 +42,8 @@ const common: Configuration | DevServerConfiguration = {
           },
         ],
       },
-      {
-        test: /\.(woff(2)?|ttf|eot)$/,
-        type: "asset/resource",
-        generator: {
-          filename: "./fonts/[name][ext]",
-        },
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
-        loader: "url-loader",
-      },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-    new DefinePlugin({
-      "process.env.API_URL": JSON.stringify("http://localhost:5000/graphql"),
-    }),
-  ],
 };
 
 export default common;
