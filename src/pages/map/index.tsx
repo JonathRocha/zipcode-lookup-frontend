@@ -91,7 +91,9 @@ export const Map = () => {
   return (
     <div className="map">
       <header className="map_header">
-        <Link to="/">Voltar</Link>
+        <Link className="map_header--link" to="/">
+          Back to home
+        </Link>
         <h1>
           {selectedAddress.placeName}, {selectedAddress.state} {selectedAddress.postCode} - {selectedAddress.country}
         </h1>
