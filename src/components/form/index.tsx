@@ -1,6 +1,6 @@
 import { useReactiveVar } from "@apollo/client";
 import { FormEvent, ChangeEvent, useCallback, useReducer, useMemo } from "react";
-import { isFetchingAddress, useAddressSearch } from "../../hooks/useAddressSearch/useAddressSearch";
+import { isFetchingAddress, useAddressSearch } from "../../hooks/useAddressSearch";
 import { AddressLookupForm, AddressLookupFormAction, AddressLookupFormActionType } from "./definition";
 
 import "./styles.scss";
