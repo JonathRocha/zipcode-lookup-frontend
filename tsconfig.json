@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "typeRoots": ["./types", "./node_modules/@types"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,12 +16,13 @@
     "downlevelIteration": true,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
-    "rootDirs": ["src"],
+    "rootDirs": ["src", "tests"],
     "paths": {
       "@/*": ["*"],
+      "@/tests/*": ["../tests/*"],
     }
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

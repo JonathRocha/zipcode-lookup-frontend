@@ -92,7 +92,7 @@ export const Form = () => {
       </div>
 
       <div className="lookup-fomr_group">
-        <button type="submit" className="lookup-form_group--submit" disabled={shouldDisableSubmit}>
+        <button id="lookup-submit" type="submit" className="lookup-form_group--submit" disabled={shouldDisableSubmit}>
           {isLoading ? "Loading..." : "Send"}
         </button>
       </div>
