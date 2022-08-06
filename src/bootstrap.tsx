@@ -3,7 +3,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { createRoot } from "react-dom/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  uri: process.env.API_URL,
   cache: new InMemoryCache({ addTypename: false }),
 });
 

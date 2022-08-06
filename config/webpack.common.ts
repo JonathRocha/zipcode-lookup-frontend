@@ -60,7 +60,7 @@ const common: Configuration | DevServerConfiguration = {
       template: "./public/index.html",
     }),
     new DefinePlugin({
-      "process.env": JSON.stringify(process.env),
+      "process.env.API_URL": JSON.stringify("http://localhost:5000/graphql"),
     }),
   ],
 };

@@ -1,13 +1,17 @@
-import { merge } from "webpack-merge";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import { DefinePlugin } from "webpack";
+import { merge } from "webpack-merge";
 import common from "./webpack.common";
 
 module.exports = merge(common, {
   mode: "production",
   devtool: "source-map",
   plugins: [
+    new DefinePlugin({
+      "process.env.API_URL": JSON.stringify("http://localhost:5000/graphql"), // TODO: change to production URL
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       baseUrl: "/",
