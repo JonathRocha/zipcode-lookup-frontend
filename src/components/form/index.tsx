@@ -55,7 +55,6 @@ export const Form = () => {
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = event.target;
-      console.log(name, value);
       dispatch({ type: fieldNameTypeMapper[name], payload: value });
     },
     [fieldNameTypeMapper],
