@@ -34,4 +34,12 @@ describe("Form Component", () => {
 
     expect(screen.getByTestId("lookup-submit")).toBeDisabled();
   });
+
+  it(`Should disable the submit button when zipCode input is empty`, async () => {
+    isFetchingAddressMock.mockReturnValue(false);
+
+    render(<Form />);
+
+    expect(screen.getByTestId("lookup-submit")).toBeDisabled();
+  });
 });
