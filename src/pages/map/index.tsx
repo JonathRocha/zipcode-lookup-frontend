@@ -6,14 +6,16 @@ import { fromLonLat } from "ol/proj";
 import { OSM, Vector } from "ol/source";
 import { Icon, Style } from "ol/style";
 import { useEffect, useMemo, useRef } from "react";
-import { useParams } from "react-router-dom";
-import { searchHistory } from "../../hooks/useAddressSearch";
+import { Link, useParams } from "react-router-dom";
+import { isFetchingAddress, searchHistory, useAddressSearch } from "../../hooks/useAddressSearch";
 
 import "./styles.scss";
 
 export const Map = () => {
   const { countryCode, zipCode } = useParams();
+  const { search } = useAddressSearch();
   const addressHistory = useReactiveVar(searchHistory);
+  const isLoading = useReactiveVar(isFetchingAddress);
   const mapRef = useRef();
 
   const selectedAddress = useMemo(
@@ -25,13 +27,20 @@ export const Map = () => {
     [addressHistory, zipCode],
   );
 
-  // TODO: check if history is empty, if so, search for address using zipCode (need to add coutry to param as well)
+  useEffect(
+    function checkIfNeedToLoadAddress() {
+      if (!selectedAddress) {
+        search(zipCode, countryCode);
+      }
+    },
+    [selectedAddress, search],
+  );
 
   useEffect(
     function loadMap() {
-      const coordinates = selectedAddress
-        ? fromLonLat([Number(selectedAddress.longitude), Number(selectedAddress.latitude)])
-        : [0, 0];
+      if (!selectedAddress) return;
+
+      const coordinates = fromLonLat([Number(selectedAddress.longitude), Number(selectedAddress.latitude)]);
       const mapObject = new OlMap({
         target: null,
         layers: [
@@ -71,10 +80,23 @@ export const Map = () => {
     [selectedAddress],
   );
 
+  if (isLoading || !selectedAddress) {
+    return (
+      <div className="map">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="map">
-      <h1>Map</h1>
-      <div className="map_ol" ref={mapRef}></div>
+      <header className="map_header">
+        <Link to="/">Voltar</Link>
+        <h1>
+          {selectedAddress.placeName}, {selectedAddress.state} {selectedAddress.postCode} - {selectedAddress.country}
+        </h1>
+      </header>
+      <div className="map_ol" ref={mapRef} />
     </div>
   );
 };
