@@ -4,6 +4,7 @@ export interface Address {
   placeName: string;
   state: string;
   country: string;
+  countryCode: string;
   postCode: string;
   longitude: string;
   latitude: string;
@@ -15,6 +16,7 @@ export const SEARCH_ADDRESS_QUERY = gql`
       placeName
       state
       country
+      countryCode
       postCode
       longitude
       latitude
