@@ -53,4 +53,12 @@ describe("Page Map", () => {
 
     expect(screen.getByText(`${placeName}, ${state} ${postCode} - ${country}`)).toBeInTheDocument();
   });
+
+  it("Should render loading when fetching address", async () => {
+    useReactiveVarSpy.mockReturnValueOnce([]).mockReturnValueOnce(true);
+
+    render(<Map />);
+
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+  });
 });
