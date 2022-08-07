@@ -1,6 +1,7 @@
 import { History } from "@/components/history";
+import * as useAddressSearch from "@/hooks/useAddressSearch";
 import { Address } from "@/hooks/useAddressSearch/definition";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 const addresses: Address[] = [
   {
@@ -35,5 +36,15 @@ describe("History Component", () => {
 
     expect(screen.getByText("Your last five searchs")).toBeInTheDocument();
     expect(screen.getByText(`${placeName}, ${state} ${postCode} - ${country}`)).toBeInTheDocument();
+  });
+
+  it(`Should clear history when the button is clicked`, async () => {
+    const spy = jest.spyOn(useAddressSearch, "searchHistory");
+
+    render(<History />);
+
+    fireEvent.click(screen.getByText("Clear history"));
+
+    expect(spy).toHaveBeenCalledWith([]);
   });
 });

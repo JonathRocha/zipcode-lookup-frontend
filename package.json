@@ -7,7 +7,7 @@
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install",
     "start": "webpack serve --open --config config/webpack.dev.ts",
-    "test": "jest"
+    "test": "jest --silent"
   },
   "repository": {
     "type": "git",
