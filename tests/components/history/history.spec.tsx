@@ -33,7 +33,7 @@ describe("History Component", () => {
 
     render(<History />);
 
-    expect(screen.getByText("Your searchs")).toBeInTheDocument();
+    expect(screen.getByText("Your last five searchs")).toBeInTheDocument();
     expect(screen.getByText(`${placeName}, ${state} ${postCode} - ${country}`)).toBeInTheDocument();
   });
 });

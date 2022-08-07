@@ -16,7 +16,7 @@ export const History = () => {
 
   return (
     <div className="history">
-      <h1>Your searchs</h1>
+      <h1>Your last five searchs</h1>
 
       <ul className="history_list">
         {addressHistory.map((address, index) => (

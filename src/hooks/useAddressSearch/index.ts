@@ -27,7 +27,8 @@ export function useAddressSearch() {
 
         if (data?.searchAddress) {
           address(data?.searchAddress);
-          searchHistory(searchHistory().concat(data.searchAddress));
+          const newHistory = searchHistory().concat(data.searchAddress);
+          searchHistory(newHistory.length > 5 ? newHistory.slice(1, 6) : newHistory);
         } else {
           address(null);
           toast.info("Address not found!");
