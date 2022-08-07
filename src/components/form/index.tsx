@@ -1,4 +1,9 @@
-import { AddressLookupForm, AddressLookupFormAction, AddressLookupFormActionType } from "@/components/form/definition";
+import {
+  AddressLookupForm,
+  AddressLookupFormAction,
+  AddressLookupFormActionType,
+  selectableCountry,
+} from "@/components/form/definition";
 import { isFetchingAddress, useAddressSearch } from "@/hooks/useAddressSearch";
 import { useReactiveVar } from "@apollo/client";
 import { ChangeEvent, FormEvent, useCallback, useMemo, useReducer } from "react";
@@ -73,8 +78,11 @@ export const Form = () => {
           onChange={handleOnChange}
           value={state.countryCode}
         >
-          <option value="US">US</option>
-          <option value="BR">BR</option>
+          {selectableCountry.map((country) => (
+            <option key={country.code} value={country.code}>
+              {country.name}
+            </option>
+          ))}
         </select>
       </div>
 
