@@ -16,4 +16,5 @@ module.exports = {
   reporters: ["default"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/"],
   coverageDirectory: "coverage",
+  transformIgnorePatterns: ["/node_modules/(?!(ol|labelgun|mapbox-to-ol-style|ol-mapbox-style)/).*/"],
 };
