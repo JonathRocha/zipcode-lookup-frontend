@@ -61,4 +61,12 @@ describe("Page Map", () => {
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
+
+  it(`Should search for address if history is empty or params do not match any history element`, async () => {
+    useReactiveVarSpy.mockReturnValueOnce([]).mockReturnValueOnce(false);
+
+    render(<Map />);
+
+    expect(searchStub).toHaveBeenCalledWith("postCode", "countryCode");
+  });
 });
