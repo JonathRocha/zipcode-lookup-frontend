@@ -43,7 +43,7 @@ describe("Page Map", () => {
     });
   });
 
-  it("Should render without crashing", async () => {
+  it("Should render without crashing", () => {
     useReactiveVarSpy.mockReturnValueOnce(addresses).mockReturnValueOnce(false);
 
     const [address] = addresses;
@@ -54,7 +54,7 @@ describe("Page Map", () => {
     expect(screen.getByText(`${placeName}, ${state} ${postCode} - ${country}`)).toBeInTheDocument();
   });
 
-  it("Should render loading when fetching address", async () => {
+  it("Should render loading when fetching address", () => {
     useReactiveVarSpy.mockReturnValueOnce([]).mockReturnValueOnce(true);
 
     render(<Map />);
@@ -62,11 +62,19 @@ describe("Page Map", () => {
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it(`Should search for address if history is empty or params do not match any history element`, async () => {
+  it(`Should search for address if history is empty or params do not match any history element`, () => {
     useReactiveVarSpy.mockReturnValueOnce([]).mockReturnValueOnce(false);
 
     render(<Map />);
 
     expect(searchStub).toHaveBeenCalledWith("postCode", "countryCode");
+  });
+
+  it(`Should render fallback message if no address found`, () => {
+    useReactiveVarSpy.mockReturnValueOnce([]).mockReturnValueOnce(false);
+
+    render(<Map />);
+
+    expect(screen.getByText("Sorry, we couldn't find an address.")).toBeInTheDocument();
   });
 });
