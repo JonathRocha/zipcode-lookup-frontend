@@ -62,12 +62,24 @@ describe("Page Map", () => {
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it(`Should search for address if history is empty or params do not match any history element`, () => {
+  it(`Should search for address if history is empty`, () => {
     useReactiveVarSpy.mockReturnValueOnce([]).mockReturnValueOnce(false);
 
     render(<Map />);
 
     expect(searchStub).toHaveBeenCalledWith("postCode", "countryCode");
+  });
+
+  it(`Should search for address if params do not match any history element`, () => {
+    useParamsSpy.mockReturnValue({
+      countryCode: "notMatchCountryCode",
+      zipCode: "notMatchPostCode",
+    });
+    useReactiveVarSpy.mockReturnValueOnce(addresses).mockReturnValueOnce(false);
+
+    render(<Map />);
+
+    expect(searchStub).toHaveBeenCalledWith("notMatchPostCode", "notMatchCountryCode");
   });
 
   it(`Should render fallback message if no address found`, () => {
