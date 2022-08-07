@@ -2,10 +2,6 @@ import { Home } from "@/pages/home";
 import { render, screen } from "@testing-library/react";
 import * as apolloClient from "@apollo/client";
 
-jest.mock("@apollo/client", () => ({
-  useReactiveVar: jest.fn(),
-}));
-
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(),
 }));
